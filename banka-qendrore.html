@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legjislacioni i Bankës Qendrore të Shqipërisë</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --royal: #1a3a6b;
+    --cobalt: #1e56a0;
+    --azure: #2e7dd1;
+    --sky: #5ba3e8;
+    --ice: #d6e8f7;
+    --frost: #edf5fd;
+    --gold: #c8972a;
+    --gold-light: #e8b84b;
+    --white: #ffffff;
+    --offwhite: #f8fafd;
+    --gray-light: #e2eaf4;
+    --gray-mid: #8fa8c8;
+    --gray-dark: #3a4a6b;
+    --text: #1a2540;
+    --text-muted: #5a6a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--offwhite);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(200, 151, 42, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .nav-logo-text span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-logo-text span:last-child {
+    font-size: 10px;
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 8px 14px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-links a.active {
+    color: var(--gold-light);
+  }
+
+  .nav-search-btn {
+    background: linear-gradient(135deg, var(--cobalt), var(--azure));
+    color: white !important;
+    padding: 7px 16px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(94, 163, 232, 0.3);
+  }
+
+  .nav-search-btn:hover {
+    background: linear-gradient(135deg, var(--azure), var(--sky)) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(30, 86, 160, 0.4);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(26,58,107,0.85) 40%, rgba(10,22,40,0.88) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bank_of_Albania.jpg/1280px-Bank_of_Albania.jpg') center/cover no-repeat;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,151,42,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,151,42,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, transparent);
+  }
+
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up 8s infinite;
+  }
+
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-20vh) scale(1.5); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 70px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,151,42,0.15);
+    border: 1px solid rgba(200,151,42,0.4);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease both;
+  }
+
+  .hero-badge span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold-light);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 780px;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.9s 0.2s ease both;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    animation: fadeInUp 0.9s 0.4s ease both;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.9s 0.6s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--cobalt), var(--azure));
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 86, 160, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(30, 86, 160, 0.5);
+    background: linear-gradient(135deg, var(--azure), var(--sky));
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem;
+    right: 2rem;
+    display: flex;
+    gap: 2rem;
+    animation: fadeIn 1s 0.8s ease both;
+  }
+
+  .hero-stat {
+    text-align: right;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 1s 1s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, transparent, var(--gold-light));
+    animation: scroll-pulse 2s infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 100px 2rem;
+  }
+
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin-bottom: 1rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--azure);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: normal;
+    color: var(--cobalt);
+  }
+
+  .section-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  /* ===== CARDS GRID ===== */
+  .cards-intro {
+    background: var(--white);
+    padding: 100px 2rem;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cobalt), var(--azure));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--frost), transparent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    border-radius: 16px;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(26, 58, 107, 0.12);
+    border-color: var(--ice);
+  }
+
+  .card:hover::before { transform: scaleX(1); }
+  .card:hover::after { opacity: 1; }
+
+  .card-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--ice), var(--frost));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.35s ease;
+  }
+
+  .card:hover .card-icon {
+    background: linear-gradient(135deg, var(--cobalt), var(--azure));
+    transform: scale(1.05);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--frost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--cobalt);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  .card:hover .card-arrow {
+    background: var(--cobalt);
+    color: white;
+    transform: translate(2px, -2px);
+  }
+
+  /* ===== FEATURE STRIP ===== */
+  .feature-strip {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal) 100%);
+    padding: 60px 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(200,151,42,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .feature-strip-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .feature-item {
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .feature-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(200,151,42,0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-item-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .feature-item-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-item-sub {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--royal) 60%, var(--cobalt) 100%);
+    padding: 140px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 60px;
+    background: var(--offwhite);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .page-header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,151,42,0.15);
+    border: 1px solid rgba(200,151,42,0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    max-width: 700px;
+    margin-bottom: 1rem;
+  }
+
+  .page-header-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 550px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .page-header-deco {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-header-deco::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(200,151,42,0.15);
+    border-radius: 50%;
+  }
+
+  .page-header-deco-icon {
+    font-size: 5rem;
+    opacity: 0.15;
+  }
+
+  /* ===== LEGISLATION PAGE ===== */
+  .law-timeline {
+    position: relative;
+    padding-left: 60px;
+  }
+
+  .law-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--cobalt), var(--sky), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    animation: fadeInLeft 0.5s ease both;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -48px;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--cobalt);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--cobalt);
+  }
+
+  .timeline-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-card:hover {
+    border-color: var(--ice);
+    box-shadow: 0 8px 30px rgba(26, 58, 107, 0.08);
+    transform: translateX(4px);
+  }
+
+  .timeline-year {
+    display: inline-block;
+    background: var(--frost);
+    color: var(--cobalt);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== INFO BLOCKS ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .info-block {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid var(--gray-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .info-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--cobalt), var(--sky));
+    border-radius: 4px 0 0 4px;
+  }
+
+  .info-block:hover {
+    box-shadow: 0 12px 40px rgba(26, 58, 107, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .info-block-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .info-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .info-block-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ===== STATUTE PAGE ===== */
+  .statute-hero-text {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid var(--gray-light);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .statute-hero-text::before {
+    content: '§';
+    position: absolute;
+    right: 2rem;
+    top: -0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 12rem;
+    color: var(--frost);
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .statute-hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  .statute-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .statute-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    transition: all 0.3s ease;
+  }
+
+  .statute-card:hover {
+    border-color: var(--azure);
+    box-shadow: 0 8px 30px rgba(26, 58, 107, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .statute-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--ice);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .statute-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .statute-card-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== SEARCH PAGE ===== */
+  .search-bar-wrap {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 20px 60px 20px 24px;
+    background: var(--white);
+    border: 2px solid var(--gray-light);
+    border-radius: 14px;
+    font-size: 1rem;
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(26, 58, 107, 0.06);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--azure);
+    box-shadow: 0 4px 30px rgba(30, 86, 160, 0.15);
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    color: var(--cobalt);
+    pointer-events: none;
+  }
+
+  .search-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray-mid);
+    margin-bottom: 2rem;
+  }
+
+  .laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .law-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .law-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--cobalt), var(--azure));
+    border-radius: 4px 0 0 4px;
+  }
+
+  .law-card:hover {
+    border-color: var(--azure);
+    box-shadow: 0 8px 30px rgba(26, 58, 107, 0.12);
+    transform: translateY(-3px);
+  }
+
+  .law-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  .law-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--frost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .law-card:hover .law-card-icon {
+    background: var(--cobalt);
+  }
+
+  .law-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .law-card-meta {
+    font-size: 0.8rem;
+    color: var(--gray-mid);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .law-card-meta::before {
+    content: '';
+    display: block;
+    width: 4px; height: 4px;
+    background: var(--azure);
+    border-radius: 50%;
+  }
+
+  .law-card-excerpt {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--gray-mid);
+    display: none;
+  }
+
+  .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .no-results p { font-size: 1.1rem; }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, var(--navy), var(--royal));
+    padding: 2.5rem 2.5rem 2rem;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 40px;
+    background: var(--white);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .modal-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+
+  .modal-year {
+    display: inline-block;
+    background: rgba(200,151,42,0.2);
+    border: 1px solid rgba(200,151,42,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    z-index: 2;
+  }
+
+  .modal-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+  }
+
+  .modal-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  .modal-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .modal-points {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .modal-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-light);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .modal-points li:last-child { border-bottom: none; }
+
+  .modal-points li::before {
+    content: '✓';
+    width: 22px;
+    height: 22px;
+    background: var(--frost);
+    color: var(--cobalt);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .modal-footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  .btn-modal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .btn-modal-primary {
+    background: linear-gradient(135deg, var(--cobalt), var(--azure));
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 86, 160, 0.35);
+  }
+
+  .btn-modal-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 86, 160, 0.5);
+  }
+
+  .btn-modal-secondary {
+    background: var(--frost);
+    color: var(--cobalt);
+    border: 1px solid var(--ice);
+  }
+
+  .btn-modal-secondary:hover {
+    background: var(--ice);
+  }
+
+  /* ===== IMPORTANCE PAGE ===== */
+  .importance-hero {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--gray-light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .importance-hero { grid-template-columns: 1fr; }
+  }
+
+  .importance-stat-big {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--navy), var(--royal));
+    border-radius: 16px;
+    color: white;
+  }
+
+  .importance-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .importance-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  .importance-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .importance-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid var(--gray-light);
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .importance-card-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    border-radius: 0 16px 0 80px;
+    opacity: 0.08;
+  }
+
+  .importance-card:hover {
+    box-shadow: 0 16px 50px rgba(26, 58, 107, 0.12);
+    transform: translateY(-6px);
+    border-color: var(--ice);
+  }
+
+  .importance-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--ice), var(--frost));
+    transition: all 0.35s ease;
+  }
+
+  .importance-card:hover .importance-card-icon {
+    transform: scale(1.05) rotate(-3deg);
+  }
+
+  .importance-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .importance-card-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ===== SUBLEGAL ===== */
+  .sublegal-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .sublegal-type {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .sublegal-type:hover {
+    box-shadow: 0 8px 30px rgba(26, 58, 107, 0.1);
+    border-color: var(--azure);
+    transform: translateY(-4px);
+  }
+
+  .sublegal-type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .sublegal-type-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .sublegal-type-count {
+    display: inline-block;
+    background: var(--frost);
+    color: var(--cobalt);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  .sublegal-type-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .sublegal-list {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--gray-light);
+    overflow: hidden;
+  }
+
+  .sublegal-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--gray-light);
+    transition: all 0.2s ease;
+  }
+
+  .sublegal-item:last-child { border-bottom: none; }
+  .sublegal-item:hover { background: var(--frost); }
+
+  .sublegal-item-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--frost);
+    color: var(--cobalt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .sublegal-item-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+    flex: 1;
+  }
+
+  .sublegal-item-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-rregullore { background: #e8f0fc; color: #1e56a0; }
+  .tag-vendim { background: #e8f7ec; color: #1a7a3a; }
+  .tag-udhezim { background: #fdf4e7; color: #9a6000; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    padding: 60px 2rem 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(200,151,42,0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  .footer-logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+
+  .footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .footer-brand-text span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .footer-brand-text span:last-child {
+    font-size: 9px;
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+  }
+
+  .footer-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,151,42,0.1);
+    border: 1px solid rgba(200,151,42,0.25);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      inset: 70px 0 0;
+      background: rgba(10,22,40,0.98);
+      padding: 2rem;
+      gap: 0.5rem;
+      overflow-y: auto;
+    }
+    .nav-links.open a { font-size: 1rem; padding: 14px 16px; }
+    .hamburger { display: flex; }
+    .hero-stats { display: none; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .page-header-deco { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 70px 1.25rem; }
+    .cards-intro { padding: 70px 1.25rem; }
+    .page-header { padding: 120px 1.25rem 60px; }
+    .modal-body { padding: 1.5rem; }
+    .modal-header { padding: 2rem 1.5rem 1.5rem; }
+    .modal-footer { flex-direction: column; }
+    .importance-hero { padding: 1.5rem; }
+  }
+
+  /* ===== LEGISLATION OVERVIEW ===== */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .overview-grid { grid-template-columns: 1fr; }
+  }
+
+  .overview-text p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .overview-sidebar {
+    background: linear-gradient(135deg, var(--navy), var(--royal));
+    border-radius: 20px;
+    padding: 2.5rem;
+    color: white;
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .sidebar-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .sidebar-item:last-child { border-bottom: none; }
+
+  .sidebar-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .sidebar-item-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2px;
+  }
+
+  .sidebar-item-text {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="showPage('home'); return false;">
+      <div class="nav-logo-icon">B</div>
+      <div class="nav-logo-text">
+        <span>Banka e Shqipërisë</span>
+        <span>Portali Legjislativ</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home'); return false;" class="active" id="nav-home">Kryefaqja</a></li>
+      <li><a href="#" onclick="showPage('legjislacioni'); return false;" id="nav-legjislacioni">Legjislacioni</a></li>
+      <li><a href="#" onclick="showPage('statuti'); return false;" id="nav-statuti">Statuti</a></li>
+      <li><a href="#" onclick="showPage('sublegal'); return false;" id="nav-sublegal">Aktet Nënligjore</a></li>
+      <li><a href="#" onclick="showPage('rendesia'); return false;" id="nav-rendesia">Rëndësia</a></li>
+      <li><a href="#" onclick="showPage('kerko'); return false;" id="nav-kerko" class="nav-search-btn">🔍 Kërko Ligje</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span>Republika e Shqipërisë — Portali Zyrtar Edukativ</span></div>
+      <h1 class="hero-title">
+        Legjislacioni i <em>Bankës Qendrore</em> të Shqipërisë
+      </h1>
+      <p class="hero-subtitle">
+        Ky portal paraqet kornizën ligjore që rregullon sistemin bankar në Shqipëri — nga ligjet themelore deri tek aktet nënligjore që garantojnë stabilitetin financiar kombëtar.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="showPage('legjislacioni'); return false;">
+          📜 Eksploro Legjislacionin
+        </a>
+        <a href="#" class="btn-outline" onclick="showPage('kerko'); return false;">
+          🔍 Kërko Ligje
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5+</div>
+        <div class="hero-stat-label">Ligje Kryesore</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1992</div>
+        <div class="hero-stat-label">Themeluar</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">30+</div>
+        <div class="hero-stat-label">Akte Nënligjore</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- FEATURE STRIP -->
+  <div class="feature-strip">
+    <div class="feature-strip-inner">
+      <div class="feature-item">
+        <span class="feature-item-icon">⚖️</span>
+        <div class="feature-item-label">Sundimi i Ligjit</div>
+        <div class="feature-item-sub">Baza ligjore e sistemit bankar</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-item-icon">🏦</span>
+        <div class="feature-item-label">Mbikëqyrje Bankare</div>
+        <div class="feature-item-sub">Regulim i bankave tregtare</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-item-icon">💰</span>
+        <div class="feature-item-label">Stabiliteti Monetar</div>
+        <div class="feature-item-sub">Kontrolli i inflacionit</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-item-icon">🛡️</span>
+        <div class="feature-item-label">Mbrojtja Financiare</div>
+        <div class="feature-item-sub">Siguria e konsumatorëve</div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-item-icon">🌐</span>
+        <div class="feature-item-label">Integrimi Europian</div>
+        <div class="feature-item-sub">Harmonizim me standartet BE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS SECTION -->
+  <section class="cards-intro">
+    <div class="section-inner">
+      <div class="section-tag">Fushat Kryesore</div>
+      <h2 class="section-title">Çfarë Rregullon <em>Legjislacioni</em> Bankar?</h2>
+      <p class="section-desc">
+        Kuptoni strukturën ligjore të Bankës Qendrore të Shqipërisë nëpërmjet katër shtyllave kryesore të sistemit bankar.
+      </p>
+      <div class="cards-grid">
+        <div class="card animate-in" onclick="showPage('legjislacioni')">
+          <div class="card-icon">📜</div>
+          <div class="card-title">Legjislacioni</div>
+          <div class="card-text">Tërësia e ligjeve dhe akteve normative që përcaktojnë funksionimin e Bankës Qendrore dhe të sistemit bankar shqiptar.</div>
+          <div class="card-arrow">→</div>
+        </div>
+        <div class="card animate-in" onclick="showPage('statuti')" style="transition-delay: 0.1s">
+          <div class="card-icon">📋</div>
+          <div class="card-title">Statuti</div>
+          <div class="card-text">Dokumenti themelor që përcakton strukturën organizative, mandatin dhe kompetencat e Bankës së Shqipërisë si institucion i pavarur.</div>
+          <div class="card-arrow">→</div>
+        </div>
+        <div class="card animate-in" onclick="showPage('sublegal')" style="transition-delay: 0.2s">
+          <div class="card-icon">📑</div>
+          <div class="card-title">Aktet Nënligjore</div>
+          <div class="card-text">Rregulloret, vendimet dhe udhëzimet administrative që zbatojnë dhe plotësojnë legjislacionin kryesor bankar.</div>
+          <div class="card-arrow">→</div>
+        </div>
+        <div class="card animate-in" onclick="showPage('rendesia')" style="transition-delay: 0.3s">
+          <div class="card-icon">🏛️</div>
+          <div class="card-title">Rëndësia e Legjislacionit</div>
+          <div class="card-text">Pse është thelbësor kuadri ligjor bankar për stabilitetin ekonomik, kontrollin e inflacionit dhe mbrojtjen e ekonomisë kombëtare.</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE PREVIEW -->
+  <section class="section" style="background: var(--offwhite);">
+    <div class="section-inner">
+      <div class="section-tag">Historia Ligjore</div>
+      <h2 class="section-title">Hapat Kryesorë të <em>Zhvillimit Ligjor</em></h2>
+      <p class="section-desc">Evolucioni i kornizës ligjore bankare shqiptare nga pavarësia deri në ditët e sotme.</p>
+      <div class="law-timeline" style="margin-top: 2rem;">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1992</div>
+            <div class="timeline-title">Themelimi i Bankës Qendrore</div>
+            <div class="timeline-desc">Miratohet ligji i parë "Për Bankën e Shqipërisë", duke e themeluar si institucion të pavarur monetar pas kalimit nga ekonomia e planifikuar.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1997</div>
+            <div class="timeline-title">Reforma pas Krizës Financiare</div>
+            <div class="timeline-desc">Pas kolapsit të skemave piramidale, miratohet legjislacioni i ri bankar që forcon mbikëqyrjen dhe rregullimin e institucioneve financiare.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2006</div>
+            <div class="timeline-title">Modernizimi i Legjislacionit</div>
+            <div class="timeline-desc">Miratohet ligji i ri "Për Bankën e Shqipërisë", duke harmonizuar kuadrin ligjor me standardet e Bashkimit Europian dhe praktikat ndërkombëtare.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">Agjenda e Integrimit Europian</div>
+            <div class="timeline-desc">Banka e Shqipërisë vazhdon harmonizimin e legjislacionit bankar me direktivat e BE-së si pjesë e procesit të anëtarësimit europian.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== LEGJISLACIONI PAGE ===== -->
+<div class="page" id="page-legjislacioni">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">Kuadri Ligjor</div>
+      <h1 class="page-header-title">Legjislacioni Bankar Shqiptar</h1>
+      <p class="page-header-sub">Tërësia e ligjeve dhe rregulloreve që formojnë sistemin bankar shqiptar</p>
+      <div class="page-header-deco">
+        <div class="page-header-deco-icon">📜</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="overview-grid">
+        <div class="overview-text">
+          <div class="section-tag">Çfarë është</div>
+          <h2 class="section-title">Roli i <em>Legjislacionit</em> Bankar</h2>
+          <div style="margin-bottom: 2rem;">
+            <p>Legjislacioni bankar shqiptar përbën tërësinë e normave juridike që rregullojnë aktivitetin e bankave, organizimin e sistemit financiar dhe funksionimin e Bankës Qendrore si autoritet monetar.</p>
+            <p>Ky legjislacion bazohet në parimet e ekonomisë së tregut dhe respekton standardet ndërkombëtare të bankingut, duke synuar integrimin e plotë me kuadrin rregullator europian.</p>
+            <p>Struktura ligjore bankare shqiptare ka evoluar ndjeshëm nga viti 1992, duke u transformuar nga një sistem i centralizuar socialiste në një sistem modern bankar, me rregullim të pavarur dhe transparencë institucionale.</p>
+          </div>
+
+          <div class="law-timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-year">Ligji Kryesor</div>
+                <div class="timeline-title">Ligji Nr. 8269/1997 — Për Bankën e Shqipërisë</div>
+                <div class="timeline-desc">Ky ligj themelues përcakton mandatin, strukturën, kompetencat dhe pavarësinë e Bankës Qendrore. Garanton autonominë institucionale dhe paraqet objektivin parësor: ruajtjen e stabilitetit të çmimeve.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-year">Mbikëqyrje</div>
+                <div class="timeline-title">Ligji Nr. 9662/2006 — Për Bankat në Republikën e Shqipërisë</div>
+                <div class="timeline-desc">Ligji kryesor për mbikëqyrjen bankare që rregullon licencimin, funksionimin, raportimin dhe likuidimin e bankave tregtare. Vendos kërkesat minimale të kapitalit dhe rregullat prudenciale.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-year">Pagesat</div>
+                <div class="timeline-title">Ligji Nr. 10 326/2010 — Për Sistemin e Pagesave</div>
+                <div class="timeline-desc">Rregullon infrastrukturën e pagesave, sistemet e shlyerjes dhe rolet institucionale në procesin e transferimit të fondeve mes bankave dhe klientëve.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-year">AML</div>
+                <div class="timeline-title">Ligji Nr. 9917/2008 — Parandalimi i Pastrimit të Parave</div>
+                <div class="timeline-desc">Zbaton standardet FATF dhe direktivat e BE-së për luftën kundër pastrimit të parave dhe financimit të terrorizmit, duke caktuar Bankën e Shqipërisë si autoritet mbikëqyrës.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-sidebar">
+          <div class="sidebar-title">📊 Strukturat Kryesore Ligjore</div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">🏛️</div>
+            <div>
+              <div class="sidebar-item-title">Kuadri Kushtetues</div>
+              <div class="sidebar-item-text">Kushtetuta e RSH — Neni 161 mbron pavarësinë e Bankës Qendrore</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">📜</div>
+            <div>
+              <div class="sidebar-item-title">Ligjet Organike</div>
+              <div class="sidebar-item-text">Ligji për Bankën e Shqipërisë dhe Ligji për Bankat</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">📑</div>
+            <div>
+              <div class="sidebar-item-title">Ligjet Sektoriale</div>
+              <div class="sidebar-item-text">Pagesat, mikrofinanca, sigurimi i depozitave, ndërmjetësuesit financiarë</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">⚙️</div>
+            <div>
+              <div class="sidebar-item-title">Aktet Nënligjore</div>
+              <div class="sidebar-item-text">Rregulloret, vendimet dhe udhëzimet e Bankës Qendrore</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">🇪🇺</div>
+            <div>
+              <div class="sidebar-item-title">Direktivat Europiane</div>
+              <div class="sidebar-item-text">Basel III, BRRD, CRD IV të harmonizuara në legjislacionin vendor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== STATUTI PAGE ===== -->
+<div class="page" id="page-statuti">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">Dokumenti Themelor</div>
+      <h1 class="page-header-title">Statuti i Bankës Qendrore</h1>
+      <p class="page-header-sub">Si përcakton Statuti strukturën, mandatin dhe pavarësinë institucionale</p>
+      <div class="page-header-deco">
+        <div class="page-header-deco-icon">📋</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="statute-hero-text animate-in">
+        <div class="section-tag">Qëllimi</div>
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">Çfarë Është <em>Statuti</em>?</h2>
+        <p>Statuti i Bankës Qendrore të Shqipërisë është dokumenti themelues që përcakton natyrën juridike, misionin, strukturën organizative dhe kompetencat ligjore të institucionit. Ai miratohet me ligj të veçantë dhe ka fuqi juridike superiore ndaj rregulloreve të tjera bankare.</p>
+        <p style="margin-top: 1rem;">Statuti garanton pavarësinë institucionale, financiare dhe operacionale të Bankës Qendrore, duke e mbrojtur nga ndërhyrjet politike të cilat mund të komprometonin objektivin parësor: stabilitetin e çmimeve.</p>
+      </div>
+
+      <div class="section-tag" style="margin-top: 2rem;">Elementet Kryesore</div>
+      <h2 class="section-title">Struktura e <em>Statutit</em></h2>
+      <div class="statute-grid" style="margin-top: 2rem;">
+        <div class="statute-card animate-in">
+          <div class="statute-card-num">01</div>
+          <div class="statute-card-title">🎯 Mandati dhe Objektivat</div>
+          <div class="statute-card-text">Objektivi parësor i Bankës Qendrore është ruajtja e stabilitetit të çmimeve. Të gjitha veprimet e tjera i nënshtrohen këtij qëllimi kryesor të mandatit kushtetues.</div>
+        </div>
+        <div class="statute-card animate-in" style="transition-delay: 0.1s">
+          <div class="statute-card-num">02</div>
+          <div class="statute-card-title">🏛️ Organe Drejtuese</div>
+          <div class="statute-card-text">Struktura drejtuese përbëhet nga Këshilli Mbikëqyrës, Komiteti i Politikës Monetare dhe Kryetari i Bankës, me mandate të caktuara dhe procedura të qarta emërimi.</div>
+        </div>
+        <div class="statute-card animate-in" style="transition-delay: 0.2s">
+          <div class="statute-card-num">03</div>
+          <div class="statute-card-title">🔒 Pavarësia Institucionale</div>
+          <div class="statute-card-text">Statuti ndalon ndërhyrjet e jashtme nga qeveria apo parlamenti në vendimet e politikës monetare, duke garantuar autonominë e plotë operacionale.</div>
+        </div>
+        <div class="statute-card animate-in" style="transition-delay: 0.3s">
+          <div class="statute-card-num">04</div>
+          <div class="statute-card-title">💼 Funksionet Bazë</div>
+          <div class="statute-card-text">Emetimi i monedhës, administrimi i rezervave valutore, mbikëqyrja bankare, politika monetare dhe funksioni i bankierit të shtetit janë funksionet kushtetuese kryesore.</div>
+        </div>
+        <div class="statute-card animate-in" style="transition-delay: 0.4s">
+          <div class="statute-card-num">05</div>
+          <div class="statute-card-title">📊 Transparenca dhe Llogaridhënia</div>
+          <div class="statute-card-text">Banka Qendrore publikon raporte periodike, raporton para parlamentit dhe publikon të dhënat statistikore, duke garantuar transparencën e plotë institucionale.</div>
+        </div>
+        <div class="statute-card animate-in" style="transition-delay: 0.5s">
+          <div class="statute-card-num">06</div>
+          <div class="statute-card-title">💰 Pavarësia Financiare</div>
+          <div class="statute-card-text">Statuti garanton autonominë financiare të Bankës Qendrore — ajo ka buxhetin e vet, nuk financohet drejtpërdrejt nga buxheti i shtetit dhe menaxhon pasuritë vetë.</div>
+        </div>
+      </div>
+
+      <div class="info-grid" style="margin-top: 4rem;">
+        <div class="info-block animate-in">
+          <span class="info-block-icon">⚖️</span>
+          <div class="info-block-title">Baza Kushtetuese</div>
+          <div class="info-block-text">Neni 161 i Kushtetutës së Republikës së Shqipërisë mbron shprehimisht pavarësinë e Bankës Qendrore dhe ndalon detyrim prej saj të financojë deficitin buxhetor.</div>
+        </div>
+        <div class="info-block animate-in" style="transition-delay: 0.1s">
+          <span class="info-block-icon">🌍</span>
+          <div class="info-block-title">Harmonizimi Europian</div>
+          <div class="info-block-text">Statuti i Bankës së Shqipërisë është hartuar duke u bazuar në Statutin e Sistemit Europian të Bankave Qendrore (SEBC), si pjesë e procesit të integrimit në BE.</div>
+        </div>
+        <div class="info-block animate-in" style="transition-delay: 0.2s">
+          <span class="info-block-icon">📈</span>
+          <div class="info-block-title">Stabiliteti Financiar</div>
+          <div class="info-block-text">Statuti autorizon Bankën Qendrore të marrë masa makroprudenciale për të mbrojtur stabilitetin e sistemit financiar dhe reduktuar rrezikun sistematik.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== SUBLEGAL PAGE ===== -->
+<div class="page" id="page-sublegal">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">Rregullim Detajues</div>
+      <h1 class="page-header-title">Aktet Nënligjore Bankare</h1>
+      <p class="page-header-sub">Rregulloret, vendimet dhe udhëzimet që zbatojnë legjislacionin kryesor</p>
+      <div class="page-header-deco">
+        <div class="page-header-deco-icon">📑</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-tag">Llojet e Akteve</div>
+      <h2 class="section-title">Hierarkia e <em>Akteve Nënligjore</em></h2>
+      <p class="section-desc">Aktet nënligjore konkretizojnë dhe zbatojnë parimet e ligjeve kryesore bankare.</p>
+
+      <div class="sublegal-types">
+        <div class="sublegal-type animate-in">
+          <div class="sublegal-type-icon">📋</div>
+          <div class="sublegal-type-name">Rregulloret</div>
+          <div class="sublegal-type-count">Aktet me Fuqi Normative</div>
+          <div class="sublegal-type-text">Akte me karakter të përgjithshëm dhe të detyrueshëm, të nxjerra nga Banka Qendrore bazuar në autoritetin ligjor për rregullimin e sektorit bankar.</div>
+        </div>
+        <div class="sublegal-type animate-in" style="transition-delay: 0.1s">
+          <div class="sublegal-type-icon">⚖️</div>
+          <div class="sublegal-type-name">Vendimet</div>
+          <div class="sublegal-type-count">Akte Administrative</div>
+          <div class="sublegal-type-text">Akte specifike të Këshillit Mbikëqyrës apo Komitetit të Politikës Monetare, të cilat rregullojnë çështje konkrete operacionale dhe politika specifike.</div>
+        </div>
+        <div class="sublegal-type animate-in" style="transition-delay: 0.2s">
+          <div class="sublegal-type-icon">📝</div>
+          <div class="sublegal-type-name">Udhëzimet</div>
+          <div class="sublegal-type-count">Akte Interpretative</div>
+          <div class="sublegal-type-text">Dokumente administrative që sqarojnë zbatimin e ligjeve dhe rregulloreve, duke dhënë orientim teknik për institucionet financiare.</div>
+        </div>
+        <div class="sublegal-type animate-in" style="transition-delay: 0.3s">
+          <div class="sublegal-type-icon">📊</div>
+          <div class="sublegal-type-name">Cirkularet</div>
+          <div class="sublegal-type-count">Komunikime Zyrtare</div>
+          <div class="sublegal-type-text">Komunikime zyrtare drejtuar bankave dhe institucioneve financiare, duke specifikuar kërkesat e raportimit dhe procedurat operacionale.</div>
+        </div>
+      </div>
+
+      <div class="section-tag" style="margin-top: 3rem;">Shembuj Konkretë</div>
+      <h2 class="section-title" style="margin-bottom: 1.5rem;">Aktet Nënligjore <em>Kryesore</em></h2>
+
+      <div class="sublegal-list animate-in">
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">01</div>
+          <div class="sublegal-item-title">Rregullore "Për Administrimin e Rrezikut të Kredisë"</div>
+          <span class="sublegal-item-tag tag-rregullore">Rregullore</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">02</div>
+          <div class="sublegal-item-title">Vendim "Për Kërkesat Minimale të Kapitalit Rregullator"</div>
+          <span class="sublegal-item-tag tag-vendim">Vendim</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">03</div>
+          <div class="sublegal-item-title">Rregullore "Për Likuiditetin e Bankave"</div>
+          <span class="sublegal-item-tag tag-rregullore">Rregullore</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">04</div>
+          <div class="sublegal-item-title">Udhëzim "Për Raportimin Statistikor të Bankave"</div>
+          <span class="sublegal-item-tag tag-udhezim">Udhëzim</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">05</div>
+          <div class="sublegal-item-title">Vendim "Për Normat e Interesit Bazë"</div>
+          <span class="sublegal-item-tag tag-vendim">Vendim</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">06</div>
+          <div class="sublegal-item-title">Rregullore "Për Pastrimin e Parave dhe Financimin e Terrorizmit"</div>
+          <span class="sublegal-item-tag tag-rregullore">Rregullore</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">07</div>
+          <div class="sublegal-item-title">Udhëzim "Për Licencimin e Bankave të Reja"</div>
+          <span class="sublegal-item-tag tag-udhezim">Udhëzim</span>
+        </div>
+        <div class="sublegal-item">
+          <div class="sublegal-item-num">08</div>
+          <div class="sublegal-item-title">Vendim "Për Kërkesat e Rezervës së Detyrueshme"</div>
+          <span class="sublegal-item-tag tag-vendim">Vendim</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== RENDESIA PAGE ===== -->
+<div class="page" id="page-rendesia">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">Impakti Ekonomik</div>
+      <h1 class="page-header-title">Rëndësia e Legjislacionit Bankar</h1>
+      <p class="page-header-sub">Pse korniza ligjore bankare është thelbësore për ekonominë kombëtare</p>
+      <div class="page-header-deco">
+        <div class="page-header-deco-icon">🏛️</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="importance-hero animate-in">
+        <div>
+          <div class="section-tag">Faktet</div>
+          <h2 class="section-title" style="margin-bottom: 1rem;">Pse <em>Rëndëson</em> Ligji Bankar?</h2>
+          <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.8; font-weight: 300;">Legjislacioni bankar nuk është thjesht teknikë juridike — është themeli mbi të cilin ndërtohet besimi publik në sistemin financiar. Pa kuadrin e duhur ligjor, bankat nuk mund të funksionojnë, kursimet e qytetarëve nuk janë të sigurta, dhe ekonomia kombëtare mbetet e cenueshme.</p>
+        </div>
+        <div class="importance-stat-big">
+          <span class="importance-stat-num">4</span>
+          <span class="importance-stat-label">Shtylla Kryesore</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.06); border-radius: 10px; padding: 1rem; text-align: center;">
+              <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold-light);">1992</div>
+              <div style="font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 4px;">Themelimi</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); border-radius: 10px; padding: 1rem; text-align: center;">
+              <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold-light);">30+</div>
+              <div style="font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 4px;">Vjet Ligj</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="importance-cards">
+        <div class="importance-card animate-in">
+          <div class="importance-card-accent" style="background: #1e56a0;"></div>
+          <div class="importance-card-icon" style="background: linear-gradient(135deg, #d6e8f7, #edf5fd);">📊</div>
+          <div class="importance-card-title">Stabiliteti Financiar</div>
+          <div class="importance-card-text">Legjislacioni bankar siguron që bankat tregtare të mbajnë rezerva të mjaftueshme kapitali, duke parandaluar falimentimet e papritura. Rregulloret prudenciale mbrojnë depozituesit dhe ruajnë besimin në sistemin financiar, duke garantuar që kursimet e qytetarëve janë të mbrojtura.</div>
+        </div>
+        <div class="importance-card animate-in" style="transition-delay: 0.1s">
+          <div class="importance-card-accent" style="background: #c8972a;"></div>
+          <div class="importance-card-icon" style="background: linear-gradient(135deg, #fdf4e7, #fffbf0);">💱</div>
+          <div class="importance-card-title">Kontrolli i Inflacionit</div>
+          <div class="importance-card-text">Korniza ligjore i jep Bankës Qendrore autonominë e nevojshme për të zbatuar politikën monetare pa presione politike. Kjo pavarësi ligjore është kusht themelor për mbajtjen e inflacionit nën kontroll dhe stabilitetin e monedhës kombëtare.</div>
+        </div>
+        <div class="importance-card animate-in" style="transition-delay: 0.2s">
+          <div class="importance-card-accent" style="background: #1a7a3a;"></div>
+          <div class="importance-card-icon" style="background: linear-gradient(135deg, #e8f7ec, #f0faf3);">🏦</div>
+          <div class="importance-card-title">Regulimi i Bankave Tregtare</div>
+          <div class="importance-card-text">Legjislacioni vendos kushtet për licencimin, funksionimin dhe mbikëqyrjen e bankave tregtare. Kjo siguron konkurrencë të ndershme, shmang monopolet dhe mbron konsumatorët nga praktikat abuzive të institucioneve financiare.</div>
+        </div>
+        <div class="importance-card animate-in" style="transition-delay: 0.3s">
+          <div class="importance-card-accent" style="background: #7b2fbe;"></div>
+          <div class="importance-card-icon" style="background: linear-gradient(135deg, #f3eafe, #f9f5ff);">🛡️</div>
+          <div class="importance-card-title">Mbrojtja e Ekonomisë Kombëtare</div>
+          <div class="importance-card-text">Nëpërmjet ligjeve anti-pastrimit të parave, rregullimit të kursit valutor dhe menaxhimit të rezervave ndërkombëtare, legjislacioni mbron ekonominë shqiptare nga shokët e jashtëm financiarë dhe krimi ekonomik.</div>
+        </div>
+      </div>
+
+      <div class="feature-strip" style="border-radius: 20px; margin-top: 4rem; overflow: hidden;">
+        <div class="feature-strip-inner">
+          <div class="feature-item">
+            <span class="feature-item-icon">🔍</span>
+            <div class="feature-item-label">Transparenca</div>
+            <div class="feature-item-sub">Raporte publike dhe llogaridhënie demokratike</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item-icon">⚡</span>
+            <div class="feature-item-label">Reagim i Shpejtë</div>
+            <div class="feature-item-sub">Mekanizma ligjore të krizave financiare</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item-icon">🤝</span>
+            <div class="feature-item-label">Besimi Publik</div>
+            <div class="feature-item-sub">Bazë ligjore për besimin në sisteme bankare</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item-icon">🌍</span>
+            <div class="feature-item-label">Integrimi Ndërkombëtar</div>
+            <div class="feature-item-sub">Harmonizim me standardet globale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== KERKO PAGE ===== -->
+<div class="page" id="page-kerko">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">Baza e të Dhënave</div>
+      <h1 class="page-header-title">Kërko Ligje Bankare</h1>
+      <p class="page-header-sub">Gjeni ligjin e dëshiruar duke shkruar emrin ose fjalë kyçe</p>
+      <div class="page-header-deco">
+        <div class="page-header-deco-icon">🔍</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="search-bar-wrap">
+        <input type="text" class="search-input" id="searchInput" placeholder="Shkruani emrin e ligjit, p.sh. 'Banka', 'Pagesa'..." oninput="filterLaws()" />
+        <span class="search-icon">🔍</span>
+      </div>
+      <p class="search-hint">Klikoni mbi një ligj për të parë detajet e plota</p>
+      <div class="laws-grid" id="lawsGrid"></div>
+      <div class="no-results" id="noResults">
+        <div class="no-results-icon">📭</div>
+        <p>Nuk u gjet asnjë ligj për "<span id="searchTerm"></span>"</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Provoni me fjalë të ndryshme</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <span class="modal-icon" id="modalIcon"></span>
+      <div class="modal-title" id="modalTitle"></div>
+      <span class="modal-year" id="modalYear"></span>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc"></p>
+      <ul class="modal-points" id="modalPoints"></ul>
+      <div class="modal-footer">
+        <button class="btn-modal btn-modal-secondary" onclick="closeModal()">Mbyll</button>
+        <button class="btn-modal btn-modal-primary" onclick="readMore()">📖 Lexo Më Shumë</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="footer-brand" onclick="showPage('home'); return false;">
+          <div class="footer-logo-icon">B</div>
+          <div class="footer-brand-text">
+            <span>Banka e Shqipërisë</span>
+            <span>Portali Legjislativ</span>
+          </div>
+        </a>
+        <p class="footer-desc">Ky portal edukativ paraqet kornizën ligjore të Bankës Qendrore të Shqipërisë. Të gjitha të dhënat janë për qëllime akademike.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigimi</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">🏠 Kryefaqja</a></li>
+          <li><a onclick="showPage('legjislacioni')">📜 Legjislacioni</a></li>
+          <li><a onclick="showPage('statuti')">📋 Statuti</a></li>
+          <li><a onclick="showPage('sublegal')">📑 Aktet Nënligjore</a></li>
+          <li><a onclick="showPage('rendesia')">🏛️ Rëndësia</a></li>
+          <li><a onclick="showPage('kerko')">🔍 Kërko Ligje</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Burime Zyrtare</div>
+        <ul class="footer-links">
+          <li><a>🌐 bankofalbania.org</a></li>
+          <li><a>📚 Ligji Nr. 8269/1997</a></li>
+          <li><a>📚 Ligji Nr. 9662/2006</a></li>
+          <li><a>🇪🇺 Standardet Basel III</a></li>
+          <li><a>🇦🇱 Kushtetuta e RSH</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Portali Edukativ — Të gjitha të drejtat e rezervuara</span>
+      <span class="footer-project">🎓 School Economics Project</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== DATA =====
+const laws = [
+  {
+    id: 1,
+    title: "Ligji për Bankën e Shqipërisë",
+    year: "Nr. 8269/1997 (i ndryshuar)",
+    icon: "🏛️",
+    category: "Ligj Organik",
+    excerpt: "Ligji themelues që rregullon mandatin, strukturën dhe pavarësinë e Bankës Qendrore...",
+    description: "Ky ligj është themeli i sistemit bankar shqiptar. Ai themeloi Bankën e Shqipërisë si bankë qendrore të pavarur, duke i caktuar mandatin kryesor: ruajtjen e stabilitetit të çmimeve. Ligji garanton pavarësinë institucionale nga qeveria dhe parlamenti.",
+    points: [
+      "Themelon Bankën e Shqipërisë si institucion i pavarur",
+      "Përcakton objektivin parësor: stabiliteti i çmimeve",
+      "Autorizon emisionin ekskluziv të monedhës kombëtare (Lekut)",
+      "Garanton pavarësinë nga presionet politike",
+      "Vendos strukturën drejtuese dhe organe vendim-marrëse",
+      "Rregullon raportimin dhe transparencën institucionale"
+    ]
+  },
+  {
+    id: 2,
+    title: "Ligji për Mbikëqyrjen Bankare",
+    year: "Nr. 9662/2006 (i ndryshuar)",
+    icon: "👁️",
+    category: "Ligj Sektorial",
+    excerpt: "Rregullon licencimin, funksionimin dhe mbikëqyrjen e bankave tregtare...",
+    description: "Ligji kryesor për mbikëqyrjen dhe rregullimin e sektorit bankar shqiptar. Ai vendos kushtet për licencimin e bankave, kërkesat minimale të kapitalit, standardet prudenciale dhe procedurat e falimentimit bankar.",
+    points: [
+      "Kushtet për licencimin e bankave tregtare",
+      "Kërkesat minimale të kapitalit rregullator",
+      "Standardet prudenciale dhe administrimi i rrezikut",
+      "Procedurat e ndërhyrjes së Bankës Qendrore",
+      "Mbrojtja e depozituesve dhe sistemet e garantimit",
+      "Harmonizim me Direktivën CRD IV të Bashkimit Europian"
+    ]
+  },
+  {
+    id: 3,
+    title: "Ligji për Sistemin e Pagesave",
+    year: "Nr. 10 326/2010",
+    icon: "💳",
+    category: "Ligj Infrastrukturor",
+    excerpt: "Rregullon infrastrukturën e pagesave dhe sistemet e shlyerjes financiare...",
+    description: "Ky ligj rregullon sistemin kombëtar të pagesave, duke siguruar funksionimin e qetë të transaksioneve financiare mes bankave dhe klientëve. Ai autorizon Bankën Qendrore të mbikëqyrë sistemet e pagesave për siguri dhe efikasitet.",
+    points: [
+      "Autorizimi dhe mbikëqyrja e sistemeve të pagesave",
+      "Rregullat e shlyerjes dhe klirimit bankar",
+      "Standardet e sigurisë për pagesat elektronike",
+      "Mbrojtja e konsumatorëve në transaksione financiare",
+      "Rregullimi i kartave bankare dhe pagesave online",
+      "Harmonizimi me Direktivën PSD2 të BE-së"
+    ]
+  },
+  {
+    id: 4,
+    title: "Ligji për Parandalimin e Pastrimit të Parave",
+    year: "Nr. 9917/2008 (i ndryshuar)",
+    icon: "🛡️",
+    category: "Ligj Sigurie",
+    excerpt: "Rregullon masat për parandalimin e pastrimit të parave dhe financimit të terrorizmit...",
+    description: "Zbaton standardet FATF (Grupi i Veprimit Financiar) dhe direktivat e BE-së për luftën kundër pastrimit të parave dhe financimit të terrorizmit. Cakton Bankën e Shqipërisë si autoritet mbikëqyrës për sektorin bankar.",
+    points: [
+      "Zbaton standardet ndërkombëtare FATF",
+      "Detyron bankat të identifikojnë klientët (KYC)",
+      "Raporton transaksionet e dyshimta tek autoritetet",
+      "Ndalon financimin e terrorizmit dhe organizatave kriminale",
+      "Implementon sanksionet financiare ndërkombëtare",
+      "Harmonizim me Direktivën AMLD5 të Bashkimit Europian"
+    ]
+  },
+  {
+    id: 5,
+    title: "Ligji për Stabilitetin Financiar",
+    year: "Nr. 133/2016",
+    icon: "📊",
+    category: "Ligj Makroprudencial",
+    excerpt: "Rregullon kornizën makroprudenciale dhe mekanizmat e rezolucionit bankar...",
+    description: "Ky ligj modernizoi kuadrin ligjor për stabilitetin financiar në Shqipëri, duke harmonizuar legjislacionin me Direktivën BRRD të BE-së për rimëkëmbjen dhe rezolucionin bankar. Forcon mjetet makroprudenciale të Bankës Qendrore.",
+    points: [
+      "Autorizon instrumentet makroprudenciale të politikës financiare",
+      "Vendos kuadrin ligjor të rezolucionit bankar",
+      "Kërkesat e kapitalit shtesë (buffer-at kapital)",
+      "Mekanizmat e rimëkëmbjes dhe planifikimi i rezolucionit",
+      "Mbrojtja e depozituesve nëpërmjet skemave të garantimit",
+      "Harmonizim me Direktivën BRRD/DRRB të Bashkimit Europian"
+    ]
+  },
+  {
+    id: 6,
+    title: "Ligji për Garantimin e Depozitave",
+    year: "Nr. 53/2014 (i ndryshuar)",
+    icon: "💰",
+    category: "Ligj Mbrojtës",
+    excerpt: "Rregullon skemën kombëtare të garantimit të depozitave bankare...",
+    description: "Ky ligj themelon Agjencinë e Sigurimit të Depozitave dhe përcakton nivelin e mbrojtjes së kursimeve të qytetarëve në rast falimentimi bankar. Garanton çdo depozitues deri në 2.5 milion lekë.",
+    points: [
+      "Garanton depozitat deri në 2.5 milion lekë për person",
+      "Themelon Agjencinë e Sigurimit të Depozitave (ASD)",
+      "Procedurat e pagesës në rast falimentimi bankar",
+      "Kontributet e detyrueshme të bankave në skemë",
+      "Mbrojtja e llogarive rrjedhëse dhe kursimeve",
+      "Harmonizim me Direktivën DGS 2014/49/BE"
+    ]
+  }
+];
+
+// ===== NAVIGATION =====
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  const page = document.getElementById('page-' + pageId);
+  if (page) page.classList.add('active');
+
+  const navLink = document.getElementById('nav-' + pageId);
+  if (navLink) navLink.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('navLinks').classList.remove('open');
+
+  if (pageId === 'kerko') renderLaws(laws);
+  
+  // Trigger animations
+  setTimeout(() => {
+    document.querySelectorAll('.animate-in').forEach((el, i) => {
+      if (isInViewport(el)) el.classList.add('visible');
+    });
+  }, 100);
+}
+
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight + 100;
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ===== SEARCH =====
+function renderLaws(data) {
+  const grid = document.getElementById('lawsGrid');
+  const noResults = document.getElementById('noResults');
+  grid.innerHTML = '';
+
+  if (data.length === 0) {
+    noResults.style.display = 'block';
+    document.getElementById('searchTerm').textContent = document.getElementById('searchInput').value;
+    return;
+  }
+
+  noResults.style.display = 'none';
+
+  data.forEach((law, i) => {
+    const card = document.createElement('div');
+    card.className = 'law-card';
+    card.style.animationDelay = (i * 0.08) + 's';
+    card.style.animation = 'fadeInUp 0.5s ease both';
+    card.innerHTML = `
+      <div class="law-card-header">
+        <div class="law-card-icon">${law.icon}</div>
+        <div class="law-card-title">${law.title}</div>
+      </div>
+      <div class="law-card-meta">${law.category}</div>
+      <div class="law-card-excerpt">${law.excerpt}</div>
+    `;
+    card.onclick = () => openModal(law);
+    grid.appendChild(card);
+  });
+}
+
+function filterLaws() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  if (!query) {
+    renderLaws(laws);
+    return;
+  }
+  const filtered = laws.filter(l =>
+    l.title.toLowerCase().includes(query) ||
+    l.excerpt.toLowerCase().includes(query) ||
+    l.category.toLowerCase().includes(query) ||
+    l.description.toLowerCase().includes(query)
+  );
+  renderLaws(filtered);
+}
+
+// ===== MODAL =====
+function openModal(law) {
+  document.getElementById('modalIcon').textContent = law.icon;
+  document.getElementById('modalTitle').textContent = law.title;
+  document.getElementById('modalYear').textContent = law.year;
+  document.getElementById('modalDesc').textContent = law.description;
+
+  const pointsList = document.getElementById('modalPoints');
+  pointsList.innerHTML = law.points.map(p => `<li>${p}</li>`).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function readMore() {
+  alert('Për informacion të plotë, vizitoni faqen zyrtare të Bankës së Shqipërisë: www.bankofalbania.org');
+}
+
+// ===== PARTICLES =====
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
+    container.appendChild(p);
+  }
+}
+
+// ===== SCROLL ANIMATIONS =====
+function handleScroll() {
+  document.querySelectorAll('.animate-in').forEach(el => {
+    if (isInViewport(el)) el.classList.add('visible');
+  });
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  createParticles();
+  renderLaws(laws);
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+});
+
+// Keyboard close modal
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>
